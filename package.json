@@ -9,5 +9,13 @@
   "dependencies": {
     "split": "~0.2.10",
     "through": "~2.3.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxogden/ldjson.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxogden/ldjson/issues"
   }
 }
