@@ -1,0 +1,13 @@
+{
+  "name": "ldjson",
+  "version": "0.0.1",
+  "description": "streaming line delimited json parser + serializer",
+  "main": "index.js",
+  "scripts": {},
+  "author": "max ogden",
+  "license": "BSD",
+  "dependencies": {
+    "split": "~0.2.10",
+    "through": "~2.3.4"
+  }
+}
