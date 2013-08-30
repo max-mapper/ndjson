@@ -1,12 +1,16 @@
-# ldjson
+# ldjson-stream
 
 #### streaming line delimited json parser + serializer
 
-[![NPM](https://nodei.co/npm/ldjson.png)](https://nodei.co/npm/ldjson/)
+[![NPM](https://nodei.co/npm/ldjson-stream.png)](https://nodei.co/npm/ldjson-stream/)
 
 ## usage
 
-#### ldjson.parse()
+```
+var ldj = require('ldjson-stream')
+```
+
+#### ldj.parse()
 
 returns a transform stream that accepts newline delimited json and emits objects
 
@@ -23,20 +27,20 @@ usage:
 
 ```js
 fs.createReadStream('data.txt')
-  .pipe(require('ldjson').parse())
+  .pipe(ldj.parse())
   .on('data', function(obj) {
     // obj is a javascript object
   })
 ```
 
-#### ldjson.serialize()
+#### ldj.serialize()
 
 returns a transform stream that accepts json objects and emits newline delimited json
 
 example usage:
 
 ```js
-var serialize = require('ldjson').serialize()
+var serialize = ldj.serialize()
 serialize.on('data', function(line) {
   // line is a line of stringified JSON with a newline delimiter at the end
 })
