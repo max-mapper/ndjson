@@ -1,5 +1,5 @@
-var through = require('through')
-var split = require('split')
+var through = require('through2')
+var split = require('split2')
 var EOL = require('os').EOL
 
 module.exports = parse
@@ -13,7 +13,7 @@ function parse() {
 }
 
 function serialize() {
-  return through(function(obj) {
-    this.queue(JSON.stringify(obj) + EOL)
+  return through.obj(function(obj, enc, cb) {
+    cb(null, JSON.stringify(obj) + EOL)
   })
 }
