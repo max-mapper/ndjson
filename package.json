@@ -3,14 +3,18 @@
   "version": "1.1.0",
   "description": "streaming line delimited json parser + serializer",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "tape test.js"
+  },
   "author": "max ogden",
   "license": "BSD",
   "dependencies": {
     "split2": "^0.1.2",
     "through2": "^0.5.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tape": "^2.13.3"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/maxogden/ldjson-stream.git"
