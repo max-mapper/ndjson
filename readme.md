@@ -23,6 +23,8 @@ example newline delimited json:
 {"hello": "world"}
 ```
 
+If you want to discard non-valid JSON messages, you can call `ldj.parse({strict: false})`
+
 usage:
 
 ```js

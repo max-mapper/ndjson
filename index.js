@@ -6,10 +6,23 @@ module.exports = parse
 module.exports.serialize = serialize
 module.exports.parse = parse
 
-function parse() {
-  return split(function(row) {
+function parse(opts) {
+  opts = opts || {}
+  opts.strict = opts.strict !== false
+
+  function strict(row) {
     if (row) return JSON.parse(row)
-  })
+  }
+
+  function nonStrict(row) {
+    try {
+      if (row) return JSON.parse(row)
+    } catch(e) {
+      // ignore
+    }
+  }
+
+  return opts.strict ? split(strict) : split(nonStrict)
 }
 
 function serialize() {
