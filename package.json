@@ -7,7 +7,7 @@
   "author": "max ogden",
   "license": "BSD",
   "dependencies": {
-    "split2": "^0.1.1",
+    "split2": "^0.1.2",
     "through2": "^0.5.1"
   },
   "devDependencies": {},
