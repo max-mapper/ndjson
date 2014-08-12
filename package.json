@@ -9,8 +9,8 @@
   "author": "max ogden",
   "license": "BSD",
   "dependencies": {
-    "split2": "^0.2.0",
-    "through2": "^0.6.0"
+    "split2": "^0.2.1",
+    "through2": "^0.6.1"
   },
   "devDependencies": {
     "tape": "^2.13.3"
