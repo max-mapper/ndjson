@@ -1,6 +1,6 @@
 {
   "name": "ldjson-stream",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "streaming line delimited json parser + serializer",
   "main": "index.js",
   "scripts": {
