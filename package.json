@@ -1,5 +1,5 @@
 {
-  "name": "ldjson-stream",
+  "name": "ndjson",
   "version": "1.2.1",
   "description": "streaming line delimited json parser + serializer",
   "main": "index.js",
@@ -17,9 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/maxogden/ldjson-stream.git"
+    "url": "git://github.com/maxogden/ndjson.git"
   },
   "bugs": {
-    "url": "https://github.com/maxogden/ldjson-stream/issues"
-  }
+    "url": "https://github.com/maxogden/ndjson/issues"
+  },
+  "homepage": "https://github.com/maxogden/ndjson"
 }

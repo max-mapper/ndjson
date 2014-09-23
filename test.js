@@ -1,9 +1,9 @@
 var test = require('tape')
-var ldj = require('./')
+var ndj = require('./')
 var os = require('os')
 
 test('.parse', function(t) {
-  var parser = ldj.parse()
+  var parser = ndj.parse()
   parser.on('data', function(obj) {
     t.equal(obj.hello, 'world')
     t.end()
@@ -13,7 +13,7 @@ test('.parse', function(t) {
 })
 
 test('.parse twice', function(t) {
-  var parser = ldj.parse()
+  var parser = ndj.parse()
   parser.once('data', function(obj) {
     t.equal(obj.hello, 'world')
     parser.once('data', function(obj) {
@@ -26,7 +26,7 @@ test('.parse twice', function(t) {
 })
 
 test('.serialize', function(t) {
-  var serializer = ldj.serialize()
+  var serializer = ndj.serialize()
   serializer.on('data', function(data) {
     t.equal(data, '{"hello":"world"}' + os.EOL)
     t.end()

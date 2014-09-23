@@ -1,13 +1,13 @@
-# ldjson-stream
+# ndjson
 
 #### streaming line delimited json parser + serializer
 
-[![NPM](https://nodei.co/npm/ldjson-stream.png)](https://nodei.co/npm/ldjson-stream/)
+[![NPM](https://nodei.co/npm/ndjson.png)](https://nodei.co/npm/ndjson/)
 
 ## usage
 
 ```
-var ldj = require('ldjson-stream')
+var ldj = require('ndjson')
 ```
 
 #### ldj.parse()
