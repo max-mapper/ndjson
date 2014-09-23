@@ -25,6 +25,29 @@ test('.parse twice', function(t) {
   parser.write('{"hello": "world"}\n{"hola": "mundo"}\n')
 })
 
+test('.parse - strict:true error', function (t) {
+  var parser = ndj.parse({strict: true})
+  try {
+    parser.write('{"no":"json"\n')
+  } catch(e) {
+    t.pass('error thrown')
+    t.end()
+  }
+})
+
+test('.parse - strict:false error', function (t) {
+  var parser = ndj.parse({strict: false})
+  parser.once('data', function (data) {
+    t.ok(data.json, 'parse second one')
+    t.end()
+  })
+  try {
+    parser.write('{"json":false\n{"json":true}\n')
+  } catch(e) {
+    t.fail('should not call an error')
+  }
+})
+
 test('.serialize', function(t) {
   var serializer = ndj.serialize()
   serializer.on('data', function(data) {
