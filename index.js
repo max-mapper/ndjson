@@ -3,7 +3,7 @@ var split = require('split2')
 var EOL = require('os').EOL
 
 module.exports = parse
-module.exports.serialize = exports.stringify = serialize
+module.exports.serialize = module.exports.stringify = serialize
 module.exports.parse = parse
 
 function parse(opts) {
