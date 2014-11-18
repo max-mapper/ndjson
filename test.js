@@ -35,6 +35,19 @@ test('.parse - strict:true error', function (t) {
   }
 })
 
+test('.parse - strict:true error event', function (t) {
+  var parser = ndj.parse({strict: true})
+  parser.on('error', function (err) {
+    t.pass('error event called')
+    t.end()
+  })
+  try {
+    parser.write('{"no":"json"\n')
+  } catch(e) {
+    t.fail('should not throw')
+  }
+})
+
 test('.parse - strict:false error', function (t) {
   var parser = ndj.parse({strict: false})
   parser.once('data', function (data) {

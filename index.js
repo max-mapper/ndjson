@@ -10,19 +10,16 @@ function parse(opts) {
   opts = opts || {}
   opts.strict = opts.strict !== false
 
-  function strict(row) {
-    if (row) return JSON.parse(row)
-  }
-
-  function nonStrict(row) {
+  function parseRow(row) {
     try {
       if (row) return JSON.parse(row)
     } catch(e) {
-      // ignore
+      if(opts.strict)
+        this.emit('error', new Error('Could now parse row ' + row.slice(0, 50) + '...'))
     }
   }
 
-  return opts.strict ? split(strict) : split(nonStrict)
+  return split(parseRow)
 }
 
 function serialize() {
