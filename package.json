@@ -1,6 +1,6 @@
 {
   "name": "ndjson",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "description": "streaming line delimited json parser + serializer",
   "main": "index.js",
   "scripts": {
