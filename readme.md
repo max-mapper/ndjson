@@ -1,6 +1,6 @@
 # ndjson
 
-#### streaming [newline delimited json](https://en.wikipedia.org/wiki/Line_Delimited_JSON) parser + serializer
+streaming [newline delimited json](https://en.wikipedia.org/wiki/Line_Delimited_JSON) parser + serializer. Available as a JS API or a command line tool
 
 [![NPM](https://nodei.co/npm/ndjson.png)](https://nodei.co/npm/ndjson/)
 
@@ -55,6 +55,29 @@ serialize.end()
 - `before` - a string to put before the stream
 - `after` - a string to put after the stream, defaults to `os.EOL` (e.g. `\n`)
 - `separator` - a string to put between items in the stream, defaults to `os.EOL` (e.g. `\n`)
+
+### CLI usage
+
+You can use the `ndjson` CLI tool to validate ndjson input, and serialize ndjson into a custom JSON output
+
+```
+Usage: ndjson [input] <options>
+```
+
+Install it globally:
+
+```
+npm i ndjson -g
+```
+
+Pass `-` to use STDIN, otherwise pass a file as input
+
+Example:
+
+```
+echo '{"foo": "bar"}' | ndjson --before=CATS --after=DOGS -
+CATS{"foo":"bar"}DOGS
+```
 
 ### license
 

@@ -6,6 +6,9 @@
   "scripts": {
     "test": "tape test.js"
   },
+  "bin": {
+    "ndjson": "cli.js"
+  },
   "author": "max ogden",
   "license": "BSD-3-Clause",
   "dependencies": {
