@@ -1,6 +1,7 @@
 var test = require('tape')
 var ndj = require('./')
 var os = require('os')
+var concat = require('concat-stream')
 
 test('.parse', function(t) {
   var parser = ndj.parse()
@@ -63,9 +64,31 @@ test('.parse - strict:false error', function (t) {
 
 test('.serialize', function(t) {
   var serializer = ndj.serialize()
-  serializer.on('data', function(data) {
+  serializer.pipe(concat(function(data) {
     t.equal(data, '{"hello":"world"}' + os.EOL)
     t.end()
-  })
+  }))
   serializer.write({hello: 'world'})
+  serializer.end()
+})
+
+test('.serialize custom before after', function(t) {
+  var serializer = ndj.serialize({before: 'CATS', after: 'DOGS'})
+  serializer.pipe(concat(function(data) {
+    t.equal(data, 'CATS{"hello":"world"}DOGS')
+    t.end()
+  }))
+  serializer.write({hello: 'world'})
+  serializer.end()
+})
+
+test('.serialize custom separator', function(t) {
+  var serializer = ndj.serialize({separator: 'CATS'})
+  serializer.pipe(concat(function(data) {
+    t.equal(data, '{"hello":"world"}CATS{"hej":"verden"}\n')
+    t.end()
+  }))
+  serializer.write({hello: 'world'})
+  serializer.write({hej: 'verden'})
+  serializer.end()
 })

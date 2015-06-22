@@ -1,6 +1,6 @@
 # ndjson
 
-#### streaming newline delimited json parser + serializer
+#### streaming [newline delimited json](https://en.wikipedia.org/wiki/Line_Delimited_JSON) parser + serializer
 
 [![NPM](https://nodei.co/npm/ndjson.png)](https://nodei.co/npm/ndjson/)
 
@@ -10,7 +10,7 @@
 var ndjson = require('ndjson')
 ```
 
-#### ndjson.parse()
+#### ndjson.parse(opts)
 
 returns a transform stream that accepts newline delimited json and emits objects
 
@@ -35,7 +35,7 @@ fs.createReadStream('data.txt')
   })
 ```
 
-#### ndjson.serialize() / ndjson.stringify()
+#### ndjson.serialize(opts) / ndjson.stringify(opts)
 
 returns a transform stream that accepts json objects and emits newline delimited json
 
@@ -50,6 +50,12 @@ serialize.write({"foo": "bar"})
 serialize.end()
 ```
 
+##### Options
+
+- `before` - a string to put before the stream
+- `after` - a string to put after the stream, defaults to `os.EOL` (e.g. `\n`)
+- `separator` - a string to put between items in the stream, defaults to `os.EOL` (e.g. `\n`)
+
 ### license
 
-BSD
+BSD-3-Clause
