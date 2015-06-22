@@ -24,25 +24,7 @@ function parse (opts) {
 }
 
 function serialize (opts) {
-  if (!opts) opts = {}
-  if (!opts.separator) opts.separator = EOL
-  if (!opts.after) opts.after = EOL
-  var firstWrite = true
-  var serializer = through.obj(function write (obj, enc, cb) {
-    var out = ""
-    if (firstWrite) {
-      if (typeof opts.before !== 'undefined') out += opts.before
-      out += JSON.stringify(obj)
-      firstWrite = false
-    } else {
-      out += opts.separator
-      out += JSON.stringify(obj)
-    }
-    cb(null, out)
-  }, function end (cb) {
-    if (typeof opts.after !== 'undefined') serializer.push(opts.after)
-    cb()
+  return through.obj(function(obj, enc, cb) {
+    cb(null, JSON.stringify(obj) + EOL)
   })
-  
-  return serializer
 }

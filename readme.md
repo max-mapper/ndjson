@@ -35,7 +35,7 @@ fs.createReadStream('data.txt')
   })
 ```
 
-#### ndjson.serialize(opts) / ndjson.stringify(opts)
+#### ndjson.serialize() / ndjson.stringify()
 
 returns a transform stream that accepts json objects and emits newline delimited json
 
@@ -48,35 +48,6 @@ serialize.on('data', function(line) {
 })
 serialize.write({"foo": "bar"})
 serialize.end()
-```
-
-##### Options
-
-- `before` - a string to put before the stream
-- `after` - a string to put after the stream, defaults to `os.EOL` (e.g. `\n`)
-- `separator` - a string to put between items in the stream, defaults to `os.EOL` (e.g. `\n`)
-
-### CLI usage
-
-You can use the `ndjson` CLI tool to validate ndjson input, and serialize ndjson into a custom JSON output
-
-```
-Usage: ndjson [input] <options>
-```
-
-Install it globally:
-
-```
-npm i ndjson -g
-```
-
-Pass `-` to use STDIN, otherwise pass a file as input
-
-Example:
-
-```
-echo '{"foo": "bar"}' | ndjson --before=CATS --after=DOGS -
-CATS{"foo":"bar"}DOGS
 ```
 
 ### license

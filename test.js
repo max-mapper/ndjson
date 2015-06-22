@@ -71,24 +71,3 @@ test('.serialize', function(t) {
   serializer.write({hello: 'world'})
   serializer.end()
 })
-
-test('.serialize custom before after', function(t) {
-  var serializer = ndj.serialize({before: 'CATS', after: 'DOGS'})
-  serializer.pipe(concat(function(data) {
-    t.equal(data, 'CATS{"hello":"world"}DOGS')
-    t.end()
-  }))
-  serializer.write({hello: 'world'})
-  serializer.end()
-})
-
-test('.serialize custom separator', function(t) {
-  var serializer = ndj.serialize({separator: 'CATS'})
-  serializer.pipe(concat(function(data) {
-    t.equal(data, '{"hello":"world"}CATS{"hej":"verden"}\n')
-    t.end()
-  }))
-  serializer.write({hello: 'world'})
-  serializer.write({hej: 'verden'})
-  serializer.end()
-})
