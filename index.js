@@ -24,7 +24,23 @@ function parse (opts) {
 }
 
 function serialize (opts) {
-  return through.obj(function(obj, enc, cb) {
-    cb(null, JSON.stringify(obj) + EOL)
+  var first = true
+
+  opts = opts || {separator: EOL}
+
+  var s = through.obj(function(obj, enc, cb) {
+    if (first) {
+      first = false
+      cb(null, JSON.stringify(obj))
+    } else {
+      cb(null, opts.separator + JSON.stringify(obj))
+    }
+  }, function(cb) {
+    this.push((opts.after || '') + EOL)
+    cb()
   })
+
+  s.push(opts.before || '')
+
+  return s
 }

@@ -35,9 +35,13 @@ fs.createReadStream('data.txt')
   })
 ```
 
-#### ndjson.serialize() / ndjson.stringify()
+#### ndjson.serialize(opts) / ndjson.stringify(opts)
 
 returns a transform stream that accepts json objects and emits newline delimited json
+
+If you want the output additional formatting before, after or between records this
+can be done by setting `opts`, eg. `ndjson.serialize({before: '[', after: ']', separator: ','})`.
+Output will always be terminated with `EOL` regardless of `opts`.
 
 example usage:
 

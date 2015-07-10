@@ -71,3 +71,18 @@ test('.serialize', function(t) {
   serializer.write({hello: 'world'})
   serializer.end()
 })
+
+test('.serialize - opts', function(t) {
+  var serializer = ndj.serialize({
+    separator: ',',
+    before: '[',
+    after: ']'
+  })
+  serializer.pipe(concat(function(data) {
+    t.equal(data, '[{"hello":"world"},{"hello":"verden"}]' + os.EOL)
+    t.end()
+  }))
+  serializer.write({hello: 'world'})
+  serializer.write({hello: 'verden'})
+  serializer.end()
+})
