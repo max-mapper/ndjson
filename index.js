@@ -24,7 +24,7 @@ function parse (opts) {
 }
 
 function serialize (opts) {
-  return through.obj(function(obj, enc, cb) {
+  return through.obj(opts, function(obj, enc, cb) {
     cb(null, JSON.stringify(obj) + EOL)
   })
 }
