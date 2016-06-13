@@ -1,6 +1,7 @@
 var through = require('through2')
 var split = require('split2')
 var EOL = require('os').EOL
+var stringify = require('json-stringify-safe')
 
 module.exports = parse
 module.exports.serialize = module.exports.stringify = serialize
@@ -25,6 +26,6 @@ function parse (opts) {
 
 function serialize (opts) {
   return through.obj(opts, function(obj, enc, cb) {
-    cb(null, JSON.stringify(obj) + EOL)
+    cb(null, stringify(obj) + EOL)
   })
 }
