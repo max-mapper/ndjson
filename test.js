@@ -71,3 +71,15 @@ test('.serialize', function(t) {
   serializer.write({hello: 'world'})
   serializer.end()
 })
+
+test('.serialize circular', function(t) {
+  var serializer = ndj.serialize()
+  serializer.pipe(concat(function(data) {
+    t.equal(data, '{"obj":"[Circular ~]"}' + os.EOL)
+    t.end()
+  }))
+  var obj = {}
+  obj.obj = obj
+  serializer.write(obj)
+  serializer.end()
+})
