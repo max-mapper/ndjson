@@ -20,7 +20,7 @@ function parse (opts) {
     }
   }
 
-  return split(parseRow)
+  return split(parseRow, opts)
 }
 
 function serialize (opts) {
