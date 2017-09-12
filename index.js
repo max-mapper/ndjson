@@ -16,7 +16,9 @@ function parse (opts) {
       if (row) return JSON.parse(row)
     } catch (e) {
       if (opts.strict) {
-        this.emit('error', new Error('Could not parse row ' + row.slice(0, 50) + '...'))
+        var error = new Error('Could not parse row ' + row.slice(0, 50) + '...')
+        error.row = row
+        this.emit('error', error)
       }
     }
   }
