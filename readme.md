@@ -35,6 +35,21 @@ fs.createReadStream('data.txt')
   })
 ```
 
+if you still want to be able to access non-valid json messages, you can add an error handler and access the `row` property on the error
+
+usage:
+
+```js
+fs.createReadStream('data.txt')
+  .pipe(ndjson.parse())
+  .on('data', function(obj) {
+    // obj is a javascript object
+  })
+  .on('error', function(error) {
+    // error.row is the original row that was received
+  })
+```
+
 #### ndjson.serialize() / ndjson.stringify()
 
 returns a transform stream that accepts json objects and emits newline delimited json
