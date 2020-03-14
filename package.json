@@ -1,6 +1,6 @@
 {
   "name": "ndjson",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "streaming newline delimited json parser + serializer",
   "main": "index.js",
   "scripts": {
@@ -14,12 +14,12 @@
   "dependencies": {
     "json-stringify-safe": "^5.0.1",
     "minimist": "^1.2.5",
-    "split2": "^2.1.0",
-    "through2": "^2.0.3"
+    "split2": "^2.1.1",
+    "through2": "^3.0.1"
   },
   "devDependencies": {
-    "concat-stream": "^1.5.0",
-    "tape": "^4.6.3"
+    "concat-stream": "^2.0.0",
+    "tape": "^4.13.2"
   },
   "repository": {
     "type": "git",
