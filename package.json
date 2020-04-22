@@ -13,7 +13,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "json-stringify-safe": "^5.0.1",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.3",
     "split2": "^2.1.0",
     "through2": "^2.0.3"
   },
