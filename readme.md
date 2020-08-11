@@ -1,13 +1,20 @@
-# ndjson
+# Fork Notes
+
+- Updates all dependencies
+- Promises to stay maintained and responsive to PRs
+
+All thanks to the original maintainer Max Ogden.
+
+# ndjson-next
 
 streaming [newline delimited json](https://en.wikipedia.org/wiki/Line_Delimited_JSON) parser + serializer. Available as a JS API or a command line tool
 
-[![NPM](https://nodei.co/npm/ndjson.png)](https://nodei.co/npm/ndjson/)
+[![NPM](https://nodei.co/npm/ndjson-next.png)](https://nodei.co/npm/ndjson-next/)
 
 ## usage
 
 ```
-var ndjson = require('ndjson')
+var ndjson = require('ndjson-next')
 ```
 
 #### ndjson.parse(opts)

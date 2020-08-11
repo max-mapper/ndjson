@@ -1,6 +1,6 @@
 {
-  "name": "ndjson",
-  "version": "1.5.0",
+  "name": "ndjson-next",
+  "version": "1.5.1",
   "description": "streaming newline delimited json parser + serializer",
   "main": "index.js",
   "scripts": {
@@ -13,22 +13,22 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "json-stringify-safe": "^5.0.1",
-    "minimist": "^1.2.0",
-    "split2": "^2.1.0",
-    "through2": "^2.0.3"
+    "minimist": "^1.2.5",
+    "split2": "^3.0.0",
+    "through2": "^4.0.0"
   },
   "devDependencies": {
-    "concat-stream": "^1.5.0",
-    "tape": "^4.6.3"
+    "concat-stream": "^2.0.0",
+    "tape": "^5.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/maxogden/ndjson.git"
+    "url": "git://github.com/contra/ndjson.git"
   },
   "bugs": {
-    "url": "https://github.com/maxogden/ndjson/issues"
+    "url": "https://github.com/contra/ndjson/issues"
   },
-  "homepage": "https://github.com/maxogden/ndjson",
+  "homepage": "https://github.com/contra/ndjson",
   "keywords": [
     "ndjson",
     "ldjson"
