@@ -41,15 +41,15 @@ fs.createReadStream('data.txt')
 
 Returns a transform stream that accepts JSON objects and emits newline delimited json buffers.
 
-example usage:
+Example usage:
 
 ```js
-var serialize = ndjson.serialize()
-serialize.on('data', function(line) {
+const stream = ndjson.stringify()
+stream.on('data', function(line) {
   // line is a line of stringified JSON with a newline delimiter at the end
 })
-serialize.write({"foo": "bar"})
-serialize.end()
+stream.write({"foo": "bar"})
+stream.end()
 ```
 
 ##### Options
