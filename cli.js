@@ -1,23 +1,28 @@
 #!/usr/bin/env node
 
-var fs = require('fs')
-var ndjson = require('./index.js')
-var minimist = require('minimist')
+const fs = require('fs')
+const { pipeline } = require('readable-stream')
+const minimist = require('minimist')
+const ndjson = require('./index.js')
 
-var args = minimist(process.argv.slice(2))
+const args = minimist(process.argv.slice(2))
+const first = args._[0]
 
-var inputStream
-
-var first = args._[0]
 if (!first) {
   console.error('Usage: ndjson [input] <options>')
   process.exit(1)
 }
 
-if (first === '-') inputStream = process.stdin
-else inputStream = fs.createReadStream(first)
+const inputStream = first === '-'
+  ? process.stdin
+  : fs.createReadStream(first)
 
-var parse = ndjson.parse(args)
-var serializer = ndjson.serialize(args)
-  
-inputStream.pipe(parse).pipe(serializer).pipe(process.stdout)
+pipeline(
+  inputStream,
+  ndjson.parse(args),
+  ndjson.stringify(args),
+  process.stdout,
+  (err) => {
+    err ? process.exit(1) : process.exit(0)
+  }
+)

@@ -1,38 +1,27 @@
-# Fork Notes
+# ndjson
 
-- Updates all dependencies
-- Promises to stay maintained and responsive to PRs
+Streaming [newline delimited json](https://en.wikipedia.org/wiki/Line_Delimited_JSON) parser + serializer. Available as a JS API and a CLI.
 
-All thanks to the original maintainer Max Ogden.
+[![NPM](https://nodei.co/npm/ndjson.png)](https://nodei.co/npm/ndjson/)
 
-# ndjson-next
-
-streaming [newline delimited json](https://en.wikipedia.org/wiki/Line_Delimited_JSON) parser + serializer. Available as a JS API or a command line tool
-
-[![NPM](https://nodei.co/npm/ndjson-next.png)](https://nodei.co/npm/ndjson-next/)
-
-## usage
+## Usage
 
 ```
-var ndjson = require('ndjson-next')
+const ndjson = require('ndjson')
 ```
 
-#### ndjson.parse(opts)
+#### ndjson.parse([opts])
 
-returns a transform stream that accepts newline delimited json and emits objects
+Returns a transform stream that accepts newline delimited json buffers and emits objects of parsed data.
 
-example newline delimited json:
-
-`data.txt`:
+Example file:
 
 ```
 {"foo": "bar"}
 {"hello": "world"}
 ```
 
-If you want to discard non-valid JSON messages, you can call `ndjson.parse({strict: false})`
-
-usage:
+Parsing it:
 
 ```js
 fs.createReadStream('data.txt')
@@ -42,9 +31,15 @@ fs.createReadStream('data.txt')
   })
 ```
 
-#### ndjson.serialize() / ndjson.stringify()
 
-returns a transform stream that accepts json objects and emits newline delimited json
+##### Options
+
+- `strict` can be set to false to discard non-valid JSON messages
+- All other options are passed through to the stream class.
+
+#### ndjson.stringify([opts])
+
+Returns a transform stream that accepts JSON objects and emits newline delimited json buffers.
 
 example usage:
 
@@ -57,6 +52,10 @@ serialize.write({"foo": "bar"})
 serialize.end()
 ```
 
-### license
+##### Options
+
+Options are passed through to the stream class.
+
+### LICENSE
 
 BSD-3-Clause
