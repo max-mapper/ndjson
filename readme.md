@@ -1,3 +1,6 @@
+# Development on this npm package is moved to https://github.com/ndjson/ndjson.js
+
+
 # ndjson
 
 streaming [newline delimited json](https://en.wikipedia.org/wiki/Line_Delimited_JSON) parser + serializer. Available as a JS API or a command line tool
