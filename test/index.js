@@ -1,10 +1,10 @@
-var test = require('tape')
-var ndj = require('./')
-var os = require('os')
-var concat = require('concat-stream')
+const test = require('tape')
+const os = require('os')
+const concat = require('concat-stream')
+const ndj = require('../')
 
 test('.parse', function(t) {
-  var parser = ndj.parse()
+  const parser = ndj.parse()
   parser.on('data', function(obj) {
     t.equal(obj.hello, 'world')
     t.end()
@@ -14,7 +14,7 @@ test('.parse', function(t) {
 })
 
 test('.parse twice', function(t) {
-  var parser = ndj.parse()
+  const parser = ndj.parse()
   parser.once('data', function(obj) {
     t.equal(obj.hello, 'world')
     parser.once('data', function(obj) {
@@ -27,7 +27,7 @@ test('.parse twice', function(t) {
 })
 
 test('.parse - strict:true error', function (t) {
-  var parser = ndj.parse({strict: true})
+  const parser = ndj.parse({strict: true})
   try {
     parser.write('{"no":"json"\n')
   } catch(e) {
@@ -37,7 +37,7 @@ test('.parse - strict:true error', function (t) {
 })
 
 test('.parse - strict:true error event', function (t) {
-  var parser = ndj.parse({strict: true})
+  const parser = ndj.parse({strict: true})
   parser.on('error', function (err) {
     t.pass('error event called')
     t.end()
@@ -50,7 +50,7 @@ test('.parse - strict:true error event', function (t) {
 })
 
 test('.parse - strict:false error', function (t) {
-  var parser = ndj.parse({strict: false})
+  const parser = ndj.parse({strict: false})
   parser.once('data', function (data) {
     t.ok(data.json, 'parse second one')
     t.end()
@@ -62,8 +62,8 @@ test('.parse - strict:false error', function (t) {
   }
 })
 
-test('.serialize', function(t) {
-  var serializer = ndj.serialize()
+test('.stringify', function(t) {
+  const serializer = ndj.stringify()
   serializer.pipe(concat(function(data) {
     t.equal(data, '{"hello":"world"}' + os.EOL)
     t.end()
@@ -72,13 +72,13 @@ test('.serialize', function(t) {
   serializer.end()
 })
 
-test('.serialize circular', function(t) {
-  var serializer = ndj.serialize()
+test('.stringify circular', function(t) {
+  const serializer = ndj.stringify()
   serializer.pipe(concat(function(data) {
     t.equal(data, '{"obj":"[Circular ~]"}' + os.EOL)
     t.end()
   }))
-  var obj = {}
+  const obj = {}
   obj.obj = obj
   serializer.write(obj)
   serializer.end()

@@ -1,13 +1,14 @@
-var through = require('through2')
-var split = require('split2')
-var EOL = require('os').EOL
-var stringify = require('json-stringify-safe')
+const through = require('through2')
+const split = require('split2')
+const { EOL } = require('os')
+const stringify = require('json-stringify-safe')
 
-module.exports = parse
-module.exports.serialize = module.exports.stringify = serialize
-module.exports.parse = parse
+module.exports.stringify = (opts) =>
+  through.obj(opts, (obj, _, cb) => {
+    cb(null, stringify(obj) + EOL)
+  })
 
-function parse (opts) {
+module.exports.parse = (opts) => {
   opts = opts || {}
   opts.strict = opts.strict !== false
 
@@ -22,10 +23,4 @@ function parse (opts) {
   }
 
   return split(parseRow, opts)
-}
-
-function serialize (opts) {
-  return through.obj(opts, function(obj, enc, cb) {
-    cb(null, stringify(obj) + EOL)
-  })
 }
